@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "343327997409",
+    "project_id": "ngurah-flutter-project",
+    "storage_bucket": "ngurah-flutter-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:343327997409:android:ae8f805f7d89dc079566a0",
+        "android_client_info": {
+          "package_name": "com.ngrhap.mynotes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "343327997409-4vetlit5p2rkn8gvh1gsndh8rh9bfgns.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKlPkyJ2G-dJoRgoxiuqcyh7XoFXDR5do"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "343327997409-4vetlit5p2rkn8gvh1gsndh8rh9bfgns.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
