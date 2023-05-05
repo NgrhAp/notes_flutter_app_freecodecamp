@@ -5,27 +5,21 @@ import 'firebase_options.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(
-    MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const RegisterView(),
-    ),
-  );
+  runApp(MaterialApp(
+    title: '',
+    theme: ThemeData(primarySwatch: Colors.blueGrey),
+    home: const HomePage(),
+  ));
 }
 
-class RegisterView extends StatefulWidget {
-  const RegisterView({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
   @override
-  State<RegisterView> createState() => _RegisterViewState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _RegisterViewState extends State<RegisterView> {
-  @override
-
+class _HomePageState extends State<HomePage> {
   late final TextEditingController _email;
   late final TextEditingController _password;
 
@@ -51,7 +45,8 @@ class _RegisterViewState extends State<RegisterView> {
       ),
       body: FutureBuilder(
         future: Firebase.initializeApp(
-            options: DefaultFirebaseOptions.currentPlatform),
+          options: DefaultFirebaseOptions.currentPlatform,
+        ),
         builder: (context, snapshot) {
           switch (snapshot.connectionState) {
             case ConnectionState.done:
@@ -94,5 +89,3 @@ class _RegisterViewState extends State<RegisterView> {
     );
   }
 }
-
-
