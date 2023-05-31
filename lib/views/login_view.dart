@@ -61,10 +61,20 @@ class _LoginViewState extends State<LoginView> {
                   email: email,
                   password: password,
                 );
-                Navigator.of(context).pushNamedAndRemoveUntil(
-                  notesRoute,
-                  (route) => false,
-                );
+                final user = FirebaseAuth.instance.currentUser;
+                if (user?.emailVerified ?? false) {
+                  // user email verified
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                    notesRoute,
+                    (route) => false,
+                  );
+                } else {
+                  // user email isnt verified
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                    verifyEmailRoute,
+                    (route) => false,
+                  );
+                }
               } on FirebaseAuthException catch (e) {
                 if (e.code == 'user-not-found') {
                   await showErrorDialog(
@@ -87,7 +97,45 @@ class _LoginViewState extends State<LoginView> {
                     'Error : ${e.code}',
                   );
                 }
-              } catch (e) {
+           import 'package:mynotes/services/auth/auth_provider.dart';
+import 'package:mynotes/services/auth/auth_user.dart';
+
+class AuthService implements AuthProvider {
+  final AuthProvider provider;
+
+  const AuthService(this.provider);
+
+  @override
+  Future<AuthUser> createUser({
+    required String email,
+    required String password,
+  }) =>
+      provider.createUser(
+        email: email,
+        password: password,
+      );
+
+  @override
+  AuthUser? get currentUser => provider.currentUser;
+
+  @override
+  Future<AuthUser> logIn({
+    required String email,
+    required String password,
+  }) =>
+      provider.login(
+        email: email,
+        password: password,
+      );
+
+  @override
+  Future<void> logOut() => provider.logOut();
+
+  @override
+  Future<void> sendEmailVerification() => provider.sendEmailVerification();
+  }
+
+   } catch (e) {
                 await showErrorDialog(
                   context,
                   e.toString(),
