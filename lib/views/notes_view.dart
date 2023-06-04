@@ -4,10 +4,10 @@ import '../constants/routes.dart';
 import '../enums/menu_action.dart';
 
 class NotesView extends StatefulWidget {
-  const NotesView({super.key});
+  const NotesView({Key? key}) : super(key: key);
 
   @override
-  State<NotesView> createState() => _NotesViewState();
+  _NotesViewState createState() => _NotesViewState();
 }
 
 class _NotesViewState extends State<NotesView> {
@@ -35,14 +35,14 @@ class _NotesViewState extends State<NotesView> {
               return const [
                 PopupMenuItem<MenuAction>(
                   value: MenuAction.logout,
-                  child: Text('Logout'),
-                )
+                  child: Text('Log out'),
+                ),
               ];
             },
           )
         ],
       ),
-      body: const Text('Hello World'),
+      body: const Text('Hello world'),
     );
   }
 }
@@ -52,19 +52,21 @@ Future<bool> showLogOutDialog(BuildContext context) {
     context: context,
     builder: (context) {
       return AlertDialog(
-        title: const Text('Sign Out'),
-        content: const Text('Are u sure u want to sign out?'),
+        title: const Text('Sign out'),
+        content: const Text('Are you sure you want to sign out?'),
         actions: [
           TextButton(
-              onPressed: () {
-                Navigator.of(context).pop(false);
-              },
-              child: const Text('Cancel')),
+            onPressed: () {
+              Navigator.of(context).pop(false);
+            },
+            child: const Text('Cancel'),
+          ),
           TextButton(
-              onPressed: () {
-                Navigator.of(context).pop(true);
-              },
-              child: const Text('Log out')),
+            onPressed: () {
+              Navigator.of(context).pop(true);
+            },
+            child: const Text('Log out'),
+          ),
         ],
       );
     },
