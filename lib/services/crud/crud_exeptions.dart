@@ -1,8 +1,8 @@
-class DatabaseAlreadyOpenExeption implements Exception {}
+class DatabaseAlreadyOpenException implements Exception {}
 
 class UnableToGetDocumentsDirectory implements Exception {}
 
-class DatabaseIsNoteOpen implements Exception {}
+class DatabaseIsNotOpen implements Exception {}
 
 class CouldNotDeleteUser implements Exception {}
 

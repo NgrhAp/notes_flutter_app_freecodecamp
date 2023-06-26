@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:mynotes/services/auth/auth_services.dart';
-import '../constants/routes.dart';
-import '../enums/menu_action.dart';
-import '../services/crud/notes_service.dart';
+import 'package:mynotes/constants/routes.dart';
+import 'package:mynotes/enums/menu_action.dart';
+import 'package:mynotes/services/auth/auth_service.dart';
+import 'package:mynotes/services/crud/notes_service.dart';
 
 class NotesView extends StatefulWidget {
   const NotesView({Key? key}) : super(key: key);
@@ -18,7 +18,6 @@ class _NotesViewState extends State<NotesView> {
   @override
   void initState() {
     _notesService = NotesService();
-    _notesService.open();
     super.initState();
   }
 
@@ -69,7 +68,7 @@ class _NotesViewState extends State<NotesView> {
                 builder: (context, snapshot) {
                   switch (snapshot.connectionState) {
                     case ConnectionState.waiting:
-                      return const Text('Waiting for all notes');
+                      return const Text('Waiting for all notes...');
                     default:
                       return const CircularProgressIndicator();
                   }
